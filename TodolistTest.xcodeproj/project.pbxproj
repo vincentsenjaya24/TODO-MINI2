@@ -12,6 +12,7 @@
 		2443A2042C2209E30072F526 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2032C2209E30072F526 /* Task.swift */; };
 		2443A2082C220C760072F526 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2072C220C760072F526 /* EditTaskView.swift */; };
 		2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2092C2212F30072F526 /* TaskRowView.swift */; };
+		BEDAD7152C2966F5008120C6 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAD7142C2966F5008120C6 /* test.swift */; };
 		BEE730922C1FDAE7005B0F99 /* TodolistTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE730912C1FDAE7005B0F99 /* TodolistTestApp.swift */; };
 		BEE730942C1FDAE7005B0F99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE730932C1FDAE7005B0F99 /* ContentView.swift */; };
 		BEE730962C1FDAEA005B0F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE730952C1FDAEA005B0F99 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		2443A2032C2209E30072F526 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		2443A2072C220C760072F526 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		2443A2092C2212F30072F526 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		BEDAD7142C2966F5008120C6 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		BEE7308E2C1FDAE7005B0F99 /* TodolistTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodolistTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE730912C1FDAE7005B0F99 /* TodolistTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistTestApp.swift; sourceTree = "<group>"; };
 		BEE730932C1FDAE7005B0F99 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				2443A2072C220C760072F526 /* EditTaskView.swift */,
 				2443A2092C2212F30072F526 /* TaskRowView.swift */,
 				241DB8112C28B0DC00888F66 /* CalendarTest.swift */,
+				BEDAD7142C2966F5008120C6 /* test.swift */,
 			);
 			path = TodolistTest;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				BEE730942C1FDAE7005B0F99 /* ContentView.swift in Sources */,
 				BEE730A02C1FDD70005B0F99 /* SheetView.swift in Sources */,
 				BEE730922C1FDAE7005B0F99 /* TodolistTestApp.swift in Sources */,
+				BEDAD7152C2966F5008120C6 /* test.swift in Sources */,
 				2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */,
 				2443A2082C220C760072F526 /* EditTaskView.swift in Sources */,
 				241DB80E2C2891F200888F66 /* TodoTabView.swift in Sources */,
@@ -296,7 +300,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodolistTest/Preview Content\"";
-				DEVELOPMENT_TEAM = KVM8YR8J8U;
+				DEVELOPMENT_TEAM = 7Z75T55G26;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -325,7 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodolistTest/Preview Content\"";
-				DEVELOPMENT_TEAM = KVM8YR8J8U;
+				DEVELOPMENT_TEAM = 7Z75T55G26;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
