@@ -16,7 +16,7 @@ struct SheetView: View {
     @AppStorage("completedTask") private var completedTask = 0
     @State private var currentDetent: PresentationDetent = .height(190)
 //    @State private var tabSelection = 1
-//    
+//
     @Query(filter: #Predicate<Task> { task in
         task.isCompleted == false
     }) private var previewTasks : [Task]
@@ -25,19 +25,31 @@ struct SheetView: View {
         task.isCompleted == true
     }) private var checkedTasks : [Task]
     
+    @State var progress: Double = 0.0
+    @State var maxTaps = 10
+    
     var body: some View {
         ZStack {
             VStack {
-                    Text("EXP \(currentExp)")
-                        .fontWeight(.semibold)
-                        .font(.system(size: 18))
-                    Text("LEVEL \(currentLevel)")
-                        .fontWeight(.semibold)
-                        .font(.system(size: 18))
-                        //xp and level here
-            }
-            .padding(.bottom, 700)
-            .padding(.trailing, 200)
+                HStack {
+                    Spacer()
+                    VStack {
+                        //                    Text("EXP \(currentExp)")
+                        //                        .fontWeight(.semibold)
+                        //                        .font(.system(size: 18))
+                        Text("Lvl. \(currentLevel)")
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+                    }
+                    
+                    VStack {
+                        ProgressBarView(maxTaps: $maxTaps, progress: $progress)
+                    }
+                    
+                    Spacer()
+                    
+                }
+            }.padding(.bottom, 700)
         }
         .onAppear(perform: {
             showSheet = true
@@ -45,9 +57,9 @@ struct SheetView: View {
         .sheet(isPresented: $showSheet) {
                     VStack(alignment: .leading, spacing: 10) {
                         if currentDetent == .height(190) {
-                            ShrunkView(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
+                            ShrunkView(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
                         } else {
-                            ContentView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
+                            ContentView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
                         }
                     }
                     .padding()
@@ -64,12 +76,14 @@ struct SheetView: View {
         @Binding var currentExp : Int
         @Binding var currentLevel : Int
         @Binding var completedTask : Int
+        @Binding var maxTaps : Int
+        @Binding var progress : Double
         
         var body: some View {
             NavigationStack{
                 List{
                     ForEach(previewTasks){task in
-                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
+                        TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
                     }
                 }.navigationTitle(checkPreviewTask(previewTasks: previewTasks))
             }

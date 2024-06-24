@@ -15,7 +15,8 @@ struct TaskRowView: View {
     @Binding var currentLevel : Int
     @Binding var completedTask : Int
     
- 
+    @Binding var maxTaps: Int
+    @Binding var progress: Double
     
     var body: some View {
            HStack {
@@ -66,7 +67,11 @@ struct TaskRowView: View {
             currentExp = 0
             currentLevel += 1
         }
+        else if progress < Double(maxTaps) {
+            progress += 1
+            }
     }
+    
     func checkPriority(task: Task) -> String{
         if task.priority == 1{
             return "meh"

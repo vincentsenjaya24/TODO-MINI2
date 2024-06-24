@@ -29,6 +29,8 @@ struct ContentView: View {
     @Binding var completedTask : Int
     @State private var tabSelection = 2
     
+    @Binding var maxTaps: Int
+    @Binding var progress: Double
     
     //testbro
     var body: some View {
@@ -39,7 +41,7 @@ struct ContentView: View {
                 NavigationStack(path: $path) {
                     List {
                         ForEach(doneTasks) { task in
-                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
+                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
                         }
                         .onDelete(perform: deleteTask)
                     }
@@ -53,7 +55,7 @@ struct ContentView: View {
                 NavigationStack(path: $path) {
                     List {
                         ForEach(previewTasks) { task in
-                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
+                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
                         }
                         .onDelete(perform: deleteTask)
                     }
@@ -75,7 +77,7 @@ struct ContentView: View {
                     List {
                         ForEach(tasks) { task in
                             if task.date.string() == selectedDay.string() {
-                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
+                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
                             }
                         }
                         .onDelete(perform: deleteTask)
