@@ -13,8 +13,14 @@
 		2443A2042C2209E30072F526 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2032C2209E30072F526 /* Task.swift */; };
 		2443A2082C220C760072F526 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2072C220C760072F526 /* EditTaskView.swift */; };
 		2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2092C2212F30072F526 /* TaskRowView.swift */; };
+		BE25652D2C29BFF2009F547B /* WaterView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25652C2C29BFF2009F547B /* WaterView2.swift */; };
+		BE2565302C29C629009F547B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BE25652F2C29C629009F547B /* Lottie */; };
+		BE2565342C29C7DA009F547B /* finish.json in Resources */ = {isa = PBXBuildFile; fileRef = BE2565332C29C7DA009F547B /* finish.json */; };
+		BE25653A2C29CDDA009F547B /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2565392C29CDDA009F547B /* LottieView.swift */; };
 		BEDAD7152C2966F5008120C6 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAD7142C2966F5008120C6 /* test.swift */; };
 		BEDAD7172C29687B008120C6 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAD7162C29687B008120C6 /* ProgressBarView.swift */; };
+		BEDAD7192C296E8D008120C6 /* Water.metal in Sources */ = {isa = PBXBuildFile; fileRef = BEDAD7182C296E8D008120C6 /* Water.metal */; };
+		BEDAD71B2C296ECE008120C6 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAD71A2C296ECE008120C6 /* WaterView.swift */; };
 		BEE730922C1FDAE7005B0F99 /* TodolistTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE730912C1FDAE7005B0F99 /* TodolistTestApp.swift */; };
 		BEE730942C1FDAE7005B0F99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE730932C1FDAE7005B0F99 /* ContentView.swift */; };
 		BEE730962C1FDAEA005B0F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE730952C1FDAEA005B0F99 /* Assets.xcassets */; };
@@ -29,8 +35,13 @@
 		2443A2032C2209E30072F526 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		2443A2072C220C760072F526 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		2443A2092C2212F30072F526 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		BE25652C2C29BFF2009F547B /* WaterView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView2.swift; sourceTree = "<group>"; };
+		BE2565332C29C7DA009F547B /* finish.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = finish.json; sourceTree = "<group>"; };
+		BE2565392C29CDDA009F547B /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		BEDAD7142C2966F5008120C6 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		BEDAD7162C29687B008120C6 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		BEDAD7182C296E8D008120C6 /* Water.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Water.metal; sourceTree = "<group>"; };
+		BEDAD71A2C296ECE008120C6 /* WaterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
 		BEE7308E2C1FDAE7005B0F99 /* TodolistTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodolistTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE730912C1FDAE7005B0F99 /* TodolistTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistTestApp.swift; sourceTree = "<group>"; };
 		BEE730932C1FDAE7005B0F99 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2565302C29C629009F547B /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +94,11 @@
 				BEDAD7142C2966F5008120C6 /* test.swift */,
 				BEDAD7162C29687B008120C6 /* ProgressBarView.swift */,
 				241C989B2C296F8600FF570D /* ProfileView.swift */,
+				BEDAD71A2C296ECE008120C6 /* WaterView.swift */,
+				BE25652C2C29BFF2009F547B /* WaterView2.swift */,
+				BEDAD7182C296E8D008120C6 /* Water.metal */,
+				BE2565332C29C7DA009F547B /* finish.json */,
+				BE2565392C29CDDA009F547B /* LottieView.swift */,
 			);
 			path = TodolistTest;
 			sourceTree = "<group>";
@@ -110,6 +127,9 @@
 			dependencies = (
 			);
 			name = TodolistTest;
+			packageProductDependencies = (
+				BE25652F2C29C629009F547B /* Lottie */,
+			);
 			productName = TodolistTest;
 			productReference = BEE7308E2C1FDAE7005B0F99 /* TodolistTest.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +158,9 @@
 				Base,
 			);
 			mainGroup = BEE730852C1FDAE7005B0F99;
+			packageReferences = (
+				BE25652E2C29C629009F547B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = BEE7308F2C1FDAE7005B0F99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,6 +177,7 @@
 			files = (
 				BEE730992C1FDAEA005B0F99 /* Preview Assets.xcassets in Resources */,
 				BEE730962C1FDAEA005B0F99 /* Assets.xcassets in Resources */,
+				BE2565342C29C7DA009F547B /* finish.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,14 +188,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE25652D2C29BFF2009F547B /* WaterView2.swift in Sources */,
 				2443A2042C2209E30072F526 /* Task.swift in Sources */,
 				BEE730942C1FDAE7005B0F99 /* ContentView.swift in Sources */,
 				BEE730A02C1FDD70005B0F99 /* SheetView.swift in Sources */,
 				BEE730922C1FDAE7005B0F99 /* TodolistTestApp.swift in Sources */,
+				BEDAD71B2C296ECE008120C6 /* WaterView.swift in Sources */,
 				BEDAD7152C2966F5008120C6 /* test.swift in Sources */,
+				BEDAD7192C296E8D008120C6 /* Water.metal in Sources */,
 				2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */,
 				2443A2082C220C760072F526 /* EditTaskView.swift in Sources */,
 				241DB80E2C2891F200888F66 /* TodoTabView.swift in Sources */,
+				BE25653A2C29CDDA009F547B /* LottieView.swift in Sources */,
 				241DB8122C28B0DC00888F66 /* CalendarTest.swift in Sources */,
 				241C989C2C296F8600FF570D /* ProfileView.swift in Sources */,
 				BEDAD7172C29687B008120C6 /* ProgressBarView.swift in Sources */,
@@ -380,6 +408,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BE25652E2C29C629009F547B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BE25652F2C29C629009F547B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE25652E2C29C629009F547B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BEE730862C1FDAE7005B0F99 /* Project object */;
 }

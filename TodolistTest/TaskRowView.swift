@@ -18,12 +18,19 @@ struct TaskRowView: View {
     @Binding var maxTaps: Int
     @Binding var progress: Double
     
+    @Binding var moveToTop: Bool
+    @Binding var isFloating: Bool
+    @Binding var returnToInitial: Bool
+    @Binding var backgroundOffset: CGFloat
+    @Binding var componentFloating: Bool
+    
     var body: some View {
            HStack {
                Button(action: {
                    task.isCompleted.toggle()
                    if task.isCompleted {
                        addProgress()
+                       moveBoat()
                    }
                }) {
                    Image(systemName: task.isCompleted ? "checkmark.square" : "square")
@@ -70,6 +77,26 @@ struct TaskRowView: View {
         else if progress < Double(maxTaps) {
             progress += 1
             }
+    }
+    
+    func moveBoat(){
+        withAnimation(.easeInOut(duration: 2)) {
+            moveToTop = true
+            returnToInitial = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(.easeInOut(duration: 2)) {
+                moveToTop = false
+                returnToInitial = true
+                backgroundOffset += 200
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+                isFloating.toggle()
+                componentFloating.toggle()
+            }
+        }
     }
     
     func checkPriority(task: Task) -> String{

@@ -32,6 +32,12 @@ struct ContentView: View {
     @Binding var maxTaps: Int
     @Binding var progress: Double
     
+    @Binding var moveToTop: Bool
+    @Binding var isFloating: Bool
+    @Binding var returnToInitial: Bool
+    @Binding var backgroundOffset: CGFloat
+    @Binding var componentFloating: Bool
+    
     //testbro
     var body: some View {
         
@@ -41,7 +47,7 @@ struct ContentView: View {
                 NavigationStack(path: $path) {
                     List {
                         ForEach(doneTasks) { task in
-                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
+                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
                         }
                         .onDelete(perform: deleteTask)
                     }
@@ -55,7 +61,7 @@ struct ContentView: View {
                 NavigationStack(path: $path) {
                     List {
                         ForEach(previewTasks) { task in
-                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
+                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
                         }
                         .onDelete(perform: deleteTask)
                     }
@@ -77,7 +83,7 @@ struct ContentView: View {
                     List {
                         ForEach(tasks) { task in
                             if task.date.string() == selectedDay.string() {
-                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress)
+                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
                             }
                         }
                         .onDelete(perform: deleteTask)
