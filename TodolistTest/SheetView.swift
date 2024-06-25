@@ -56,8 +56,23 @@ struct SheetView: View {
                     
                 }
                 
-                
             }.padding(.bottom, 700)
+            
+            VStack {
+                Button(action: {
+                    showSheet = true
+                }) {
+                    ZStack {
+                        Circle()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.white)
+                        Image(systemName: "list.bullet.clipboard.fill")
+                            .foregroundColor(.black)
+                            .font(.system(size: 24))
+                    }
+                }
+                .padding(.top, 650)
+            }
         }
         .edgesIgnoringSafeArea(.all)
         .onAppear(perform: {
