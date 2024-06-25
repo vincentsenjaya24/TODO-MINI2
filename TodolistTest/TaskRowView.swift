@@ -31,6 +31,7 @@ struct TaskRowView: View {
                    if task.isCompleted {
                        addProgress()
                        moveBoat()
+
                    }
                }) {
                    Image(systemName: task.isCompleted ? "checkmark.square" : "square")
@@ -137,3 +138,5 @@ struct TaskRowView: View {
 //        fatalError("Failed to create model container")
 //    }
 //}
+
+

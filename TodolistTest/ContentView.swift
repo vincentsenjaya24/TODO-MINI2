@@ -51,6 +51,7 @@ struct ContentView: View {
                         }
                         .onDelete(perform: deleteTask)
                     }
+                    .scrollContentBackground(.hidden)
                     .navigationTitle("Completed Task")
                     .navigationDestination(for: Task.self, destination: EditTaskView.init)
                     
@@ -65,12 +66,15 @@ struct ContentView: View {
                         }
                         .onDelete(perform: deleteTask)
                     }
+                    .scrollContentBackground(.hidden)
                     .navigationTitle("To-Do")
                     .toolbar {
                         Button("Add Task", systemImage: "plus", action: addTask)
                     }
                     .navigationDestination(for: Task.self, destination: EditTaskView.init)
-                }.padding(.bottom, 40)
+                }
+                .padding(.bottom, 40)
+                
 //                Button("Reset", systemImage: "minus", action: resetSwiftData)
                 
             }.tag(2)
@@ -88,7 +92,9 @@ struct ContentView: View {
                         }
                         .onDelete(perform: deleteTask)
                     }
+                    .scrollContentBackground(.hidden)
                     .navigationTitle("Schedule")
+                    .listStyle(.grouped)
                 }
 //                Button("Reset", systemImage: "minus", action: resetSwiftData)
             }.tag(3)

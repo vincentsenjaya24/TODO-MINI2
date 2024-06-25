@@ -19,12 +19,12 @@ struct TodoTabView: View {
     ]
     var body: some View {
         ZStack{
-            Capsule()
+            RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                 .frame(height: 80)
                 .foregroundColor(Color(.secondarySystemBackground))
                 .shadow(radius: 2)
             
-            HStack{
+            HStack(){
                 ForEach(0..<3){ index in
                     Button{
                         tabSelection = index + 1
@@ -35,13 +35,13 @@ struct TodoTabView: View {
                             Text(tabBarItems[index].title)
                             if index + 1 == tabSelection {
                                 Capsule()
-                                    .frame(height: 8)
+                                    .frame(height: 0)
                                     .foregroundColor(.blue)
                                     .matchedGeometryEffect(id: "SelectedTabId", in: animationNamespace)
                                     .offset(y: 3)
                             } else {
                                 Capsule()
-                                    .frame(height: 8)
+                                    .frame(height: 0)
                                     .foregroundColor(.clear)
                                     .offset(y: 3)
                             }
@@ -49,9 +49,11 @@ struct TodoTabView: View {
                     }
                 }
             }
-            .frame(height: 80)
-            .clipShape(Capsule())
+            .frame(height: 48)
+            
+            
         }
+        .padding(8)
     }
 }
 

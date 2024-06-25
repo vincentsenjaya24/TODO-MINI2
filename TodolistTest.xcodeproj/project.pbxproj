@@ -89,6 +89,9 @@
 				BEDAD71A2C296ECE008120C6 /* WaterView.swift */,
 				BE25652C2C29BFF2009F547B /* WaterView2.swift */,
 				BEDAD7182C296E8D008120C6 /* Water.metal */,
+				BE2565332C29C7DA009F547B /* finish.json */,
+				BE2565392C29CDDA009F547B /* LottieView.swift */,
+				BEDAD7142C2966F5008120C6 /* test.swift */,
 				BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */,
 			);
 			path = TodolistTest;

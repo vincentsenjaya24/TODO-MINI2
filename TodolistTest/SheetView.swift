@@ -112,4 +112,5 @@ struct SheetView: View {
 
 #Preview {
     SheetView()
+        .modelContainer(for: Task.self)
 }
