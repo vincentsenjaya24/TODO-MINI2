@@ -74,22 +74,22 @@ struct ContentView: View {
                 
             }.tag(2)
             VStack{
-                NavigationStack(path: $path) {
-                    Divider()
-                  
-                        CalendarTest(selectedDay: $selectedDay).padding()
-                    
-                    List {
-                        ForEach(tasks) { task in
-                            if task.date.string() == selectedDay.string() {
-                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
-                            }
-                        }
-                        .onDelete(perform: deleteTask)
-                    }
-                    .navigationTitle("Schedule")
-                }
-//                ProfileView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
+//                NavigationStack(path: $path) {
+//                    Divider()
+//                  
+//                        CalendarTest(selectedDay: $selectedDay).padding()
+//                    
+//                    List {
+//                        ForEach(tasks) { task in
+//                            if task.date.string() == selectedDay.string() {
+//                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+//                            }
+//                        }
+//                        .onDelete(perform: deleteTask)
+//                    }
+//                    .navigationTitle("Schedule")
+//                }
+                ProfileView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
             }.tag(3)
         }
         .overlay(alignment: .bottom){
