@@ -24,7 +24,6 @@ struct TodoTabView: View {
                 .frame(height: 80)
                 .foregroundColor(Color(.secondarySystemBackground))
                 .shadow(radius: 2)
-            
             HStack(){
                 ForEach(0..<3){ index in
                     Button{

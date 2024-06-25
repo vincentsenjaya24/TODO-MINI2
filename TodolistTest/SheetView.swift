@@ -38,23 +38,13 @@ struct SheetView: View {
             VStack {
                 HStack {
                     Spacer()
-                    VStack {
                         Text("Lvl. \(currentLevel)")
                             .fontWeight(.semibold)
                             .font(.system(size: 12))
-                        Spacer()
-                        Button("CloseSheet"){
-                            showSheet.toggle()
-                        }
-                    }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    
-                    VStack {
                         ProgressBarView(maxTaps: $maxTaps, progress: $progress)
-                    }
-                    
                     Spacer()
                     
-                }
+                }.background(.regularMaterial).clipped().frame(width: 300).cornerRadius(15)
                 
             }.padding(.bottom, 700)
             
@@ -80,13 +70,14 @@ struct SheetView: View {
         })
         .sheet(isPresented: $showSheet) {
             ZStack {
-                Color.white.edgesIgnoringSafeArea(.all)
+//                Color.white.edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading, spacing: 10) {
                     if currentDetent == .height(300) {
-                        ShrunkView(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                        ZStack {
+                            ShrunkView(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                        }
                     } else {
                         ZStack{
-                            Color.black.edgesIgnoringSafeArea(.all)
                             ContentView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
                         }
                     }

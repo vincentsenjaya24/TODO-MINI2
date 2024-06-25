@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2410839B2C2ADBED00233891 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2410839A2C2ADBED00233891 /* Lottie */; };
 		241DB80E2C2891F200888F66 /* TodoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DB80D2C2891F200888F66 /* TodoTabView.swift */; };
 		241DB8122C28B0DC00888F66 /* CalendarTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DB8112C28B0DC00888F66 /* CalendarTest.swift */; };
 		2443A2042C2209E30072F526 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2032C2209E30072F526 /* Task.swift */; };
 		2443A2082C220C760072F526 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2072C220C760072F526 /* EditTaskView.swift */; };
 		2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2092C2212F30072F526 /* TaskRowView.swift */; };
 		BE25652D2C29BFF2009F547B /* WaterView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25652C2C29BFF2009F547B /* WaterView2.swift */; };
-		BE2565302C29C629009F547B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = BE25652F2C29C629009F547B /* Lottie */; };
 		BE3DDED22C2AAAB700AFD8AA /* boat tanpa shadow  (5).json in Resources */ = {isa = PBXBuildFile; fileRef = BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */; };
 		BEDAD7172C29687B008120C6 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAD7162C29687B008120C6 /* ProgressBarView.swift */; };
 		BEDAD7192C296E8D008120C6 /* Water.metal in Sources */ = {isa = PBXBuildFile; fileRef = BEDAD7182C296E8D008120C6 /* Water.metal */; };
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE2565302C29C629009F547B /* Lottie in Frameworks */,
+				2410839B2C2ADBED00233891 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,9 +89,6 @@
 				BEDAD71A2C296ECE008120C6 /* WaterView.swift */,
 				BE25652C2C29BFF2009F547B /* WaterView2.swift */,
 				BEDAD7182C296E8D008120C6 /* Water.metal */,
-				BE2565332C29C7DA009F547B /* finish.json */,
-				BE2565392C29CDDA009F547B /* LottieView.swift */,
-				BEDAD7142C2966F5008120C6 /* test.swift */,
 				BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */,
 			);
 			path = TodolistTest;
@@ -122,7 +119,7 @@
 			);
 			name = TodolistTest;
 			packageProductDependencies = (
-				BE25652F2C29C629009F547B /* Lottie */,
+				2410839A2C2ADBED00233891 /* Lottie */,
 			);
 			productName = TodolistTest;
 			productReference = BEE7308E2C1FDAE7005B0F99 /* TodolistTest.app */;
@@ -153,7 +150,7 @@
 			);
 			mainGroup = BEE730852C1FDAE7005B0F99;
 			packageReferences = (
-				BE25652E2C29C629009F547B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				241083992C2ADBED00233891 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = BEE7308F2C1FDAE7005B0F99 /* Products */;
 			projectDirPath = "";
@@ -327,7 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodolistTest/Preview Content\"";
-				DEVELOPMENT_TEAM = 7Z75T55G26;
+				DEVELOPMENT_TEAM = KVM8YR8J8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -356,7 +353,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodolistTest/Preview Content\"";
-				DEVELOPMENT_TEAM = 7Z75T55G26;
+				DEVELOPMENT_TEAM = KVM8YR8J8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -401,20 +398,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BE25652E2C29C629009F547B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		241083992C2ADBED00233891 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.4.3;
+				kind = exactVersion;
+				version = 4.4.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE25652F2C29C629009F547B /* Lottie */ = {
+		2410839A2C2ADBED00233891 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE25652E2C29C629009F547B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 241083992C2ADBED00233891 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
