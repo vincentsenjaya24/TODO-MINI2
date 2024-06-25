@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		241C989C2C296F8600FF570D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241C989B2C296F8600FF570D /* ProfileView.swift */; };
 		241DB80E2C2891F200888F66 /* TodoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DB80D2C2891F200888F66 /* TodoTabView.swift */; };
 		241DB8122C28B0DC00888F66 /* CalendarTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241DB8112C28B0DC00888F66 /* CalendarTest.swift */; };
 		2443A2042C2209E30072F526 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2032C2209E30072F526 /* Task.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		241C989B2C296F8600FF570D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		241DB80D2C2891F200888F66 /* TodoTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTabView.swift; sourceTree = "<group>"; };
 		241DB8112C28B0DC00888F66 /* CalendarTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTest.swift; sourceTree = "<group>"; };
 		2443A2032C2209E30072F526 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				241DB8112C28B0DC00888F66 /* CalendarTest.swift */,
 				BEDAD7142C2966F5008120C6 /* test.swift */,
 				BEDAD7162C29687B008120C6 /* ProgressBarView.swift */,
+				241C989B2C296F8600FF570D /* ProfileView.swift */,
 			);
 			path = TodolistTest;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				2443A2082C220C760072F526 /* EditTaskView.swift in Sources */,
 				241DB80E2C2891F200888F66 /* TodoTabView.swift in Sources */,
 				241DB8122C28B0DC00888F66 /* CalendarTest.swift in Sources */,
+				241C989C2C296F8600FF570D /* ProfileView.swift in Sources */,
 				BEDAD7172C29687B008120C6 /* ProgressBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,7 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodolistTest/Preview Content\"";
-				DEVELOPMENT_TEAM = 7Z75T55G26;
+				DEVELOPMENT_TEAM = KVM8YR8J8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -333,7 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TodolistTest/Preview Content\"";
-				DEVELOPMENT_TEAM = 7Z75T55G26;
+				DEVELOPMENT_TEAM = KVM8YR8J8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
