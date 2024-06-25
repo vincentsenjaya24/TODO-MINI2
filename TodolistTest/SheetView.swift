@@ -14,7 +14,7 @@ struct SheetView: View {
     @AppStorage("currentExp") private var currentExp = 0 
     @AppStorage("currentLevel") private var currentLevel = 1
     @AppStorage("completedTask") private var completedTask = 0
-    @State private var currentDetent: PresentationDetent = .height(190)
+    @State private var currentDetent: PresentationDetent = .height(300)
     @Query(filter: #Predicate<Task> { task in
         task.isCompleted == false
     }) private var previewTasks : [Task]
@@ -37,43 +37,64 @@ struct SheetView: View {
             VStack {
                 HStack {
                     Spacer()
-                    VStack {
-                        //                    Text("EXP \(currentExp)")
-                        //                        .fontWeight(.semibold)
-                        //                        .font(.system(size: 18))
                         Text("Lvl. \(currentLevel)")
                             .fontWeight(.semibold)
                             .font(.system(size: 12))
-                    }
-                    
-                    VStack {
                         ProgressBarView(maxTaps: $maxTaps, progress: $progress)
-                    }
-                    
                     Spacer()
                     
-                }
+                }.background(.regularMaterial).clipped().frame(width: 300).cornerRadius(15)
+                
             }.padding(.bottom, 700)
+            
+            VStack {
+                Button(action: {
+                    showSheet = true
+                }) {
+                    ZStack {
+                        Circle()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(.white)
+                        Image(systemName: "list.bullet.clipboard.fill")
+                            .foregroundColor(.black)
+                            .font(.system(size: 24))
+                    }
+                }
+                .padding(.top, 650)
+            }
         }
+        .edgesIgnoringSafeArea(.all)
         .onAppear(perform: {
             showSheet = true
         })
         .sheet(isPresented: $showSheet) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        if currentDetent == .height(190) {
+            ZStack {
+//                Color.white.edgesIgnoringSafeArea(.all)
+                VStack(alignment: .leading, spacing: 10) {
+                    if currentDetent == .height(300) {
+                        ZStack {
                             ShrunkView(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
-                        } else {
+                        }
+                    } else {
+                        ZStack{
                             ContentView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
                         }
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    .presentationDetents([.height(190), .medium, .large], selection: $currentDetent)
-                    .presentationCornerRadius(30)
-                    .presentationBackground(.regularMaterial)
-                    .presentationDragIndicator(.visible)
-                    .interactiveDismissDisabled(true).ignoresSafeArea()
+                }
+                //                    .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .presentationDetents([.height(300), .medium, .large], selection: $currentDetent)
+                .presentationCornerRadius(30)
+                .presentationBackground(.regularMaterial)
+                .presentationDragIndicator(.visible)
+            }
+                    
         }
+        .edgesIgnoringSafeArea(.all)
+        .scrollContentBackground(.hidden)
+        .presentationBackgroundInteraction(.enabled(upThrough: .height(120)))
+        .interactiveDismissDisabled(true).ignoresSafeArea()
+//        .presentationBackground(<#T##style: ShapeStyle##ShapeStyle#>)
     }
     struct ShrunkView: View {
         var previewTasks: [Task]
@@ -112,4 +133,5 @@ struct SheetView: View {
 
 #Preview {
     SheetView()
+        .modelContainer(for: Task.self)
 }

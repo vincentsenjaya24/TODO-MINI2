@@ -37,64 +37,68 @@ struct ContentView: View {
     @Binding var returnToInitial: Bool
     @Binding var backgroundOffset: CGFloat
     @Binding var componentFloating: Bool
+    
     //testbro
     var body: some View {
-        
-        TabView(selection: $tabSelection){
-            
-            VStack{
-                NavigationStack(path: $path) {
-                    List {
-                        ForEach(doneTasks) { task in
-                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+            TabView(selection: $tabSelection){
+                VStack{
+                    NavigationStack(path: $path) {
+                        List {
+                            ForEach(doneTasks) { task in
+                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                            }
+                            .onDelete(perform: deleteTask)
                         }
-                        .onDelete(perform: deleteTask)
+                        .scrollContentBackground(.hidden)
+                        .navigationTitle("Completed Task")
+                        .navigationDestination(for: Task.self, destination: EditTaskView.init)
+                        
                     }
-                    .navigationTitle("Completed Task")
-                    .navigationDestination(for: Task.self, destination: EditTaskView.init)
+                    //                Button("Reset", systemImage: "minus", action: resetSwiftData)
+                }.tag(1)
+                VStack{
+                    NavigationStack(path: $path) {
+                        List {
+                            ForEach(previewTasks) { task in
+                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                            }
+                            .onDelete(perform: deleteTask)
+                        }
+                        .scrollContentBackground(.hidden)
+                        .navigationTitle("To-Do")
+                        .toolbar {
+                            Button("Add Task", systemImage: "plus", action: addTask)
+                        }
+                        .navigationDestination(for: Task.self, destination: EditTaskView.init)
+                    }
+                    .padding(.bottom, 40)
                     
-                }
-//                Button("Reset", systemImage: "minus", action: resetSwiftData)
-            }.tag(1)
-            VStack{
-                NavigationStack(path: $path) {
-                    List {
-                        ForEach(previewTasks) { task in
-                            TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                    //                Button("Reset", systemImage: "minus", action: resetSwiftData)
+                    
+                }.tag(2)
+                VStack{
+                    NavigationStack(path: $path) {
+                        List {
+                            CalendarTest(selectedDay: $selectedDay).padding()
+                            ForEach(tasks) { task in
+                                if task.date.string() == selectedDay.string() {
+                                    TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                                }
+                            }
+                            .onDelete(perform: deleteTask)
                         }
-                        .onDelete(perform: deleteTask)
+                        .navigationTitle("Schedule")
+                        
                     }
-                    .navigationTitle("To-Do")
-                    .toolbar {
-                        Button("Add Task", systemImage: "plus", action: addTask)
-                    }
-                    .navigationDestination(for: Task.self, destination: EditTaskView.init)
-                }.padding(.bottom, 40)
-//                Button("Reset", systemImage: "minus", action: resetSwiftData)
-                
-            }.tag(2)
-            VStack{
-//                NavigationStack(path: $path) {
-//                    Divider()
-//                  
-//                        CalendarTest(selectedDay: $selectedDay).padding()
-//                    
-//                    List {
-//                        ForEach(tasks) { task in
-//                            if task.date.string() == selectedDay.string() {
-//                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
-//                            }
-//                        }
-//                        .onDelete(perform: deleteTask)
-//                    }
-//                    .navigationTitle("Schedule")
-//                }
-                ProfileView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
-            }.tag(3)
-        }
-        .overlay(alignment: .bottom){
-            TodoTabView(tabSelection: $tabSelection)
-        }
+                }
+                .tag(3)
+                .padding(.bottom, 50)
+                //            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            }
+            .background(ignoresSafeAreaEdges: .bottom)
+            .overlay(alignment: .bottom){
+                TodoTabView(tabSelection: $tabSelection)
+            }
     }
 //    func addTask() {
 //        let task = Task(title: "", isCompleted: false, details: "", date: "", priority: 2)

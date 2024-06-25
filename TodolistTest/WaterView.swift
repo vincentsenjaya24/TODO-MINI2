@@ -50,7 +50,6 @@ struct WaterView: View {
                                 maxSampleOffset: .zero
                             )
                     }
-                    .frame(width: .infinity, height: .infinity)
                     .clipped()
                 
                 VStack {
@@ -61,7 +60,8 @@ struct WaterView: View {
                 }
                 
                 VStack {
-                    Image("boat2")
+                    LottieView(animation: .named("boat tanpa shadow  (5)"))
+                        .playbackMode(moveToTop ? .playing(.toProgress(2, loopMode: .loop)) : .paused)
                         .resizable()
                         .frame(width: 200, height: 200)
                         .padding(.bottom, 250)
@@ -75,29 +75,29 @@ struct WaterView: View {
                         }
                 }
                 
-                Button("Move") {
-                    withAnimation(.easeInOut(duration: 2)) {
-                        moveToTop = true
-                        returnToInitial = false
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation(.easeInOut(duration: 2)) {
-                            moveToTop = false
-                            returnToInitial = true
-                            backgroundOffset += 200
-                        }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
-                            isFloating.toggle()
-                            componentFloating.toggle()
-                        }
-                    }
-                }
-                .padding(.top, 500)
-                .foregroundColor(.white)
-                .bold()
-                .font(.system(size: 20))
+//                Button("Move") {
+//                    withAnimation(.easeInOut(duration: 2)) {
+//                        moveToTop = true
+//                        returnToInitial = false
+//                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                        withAnimation(.easeInOut(duration: 2)) {
+//                            moveToTop = false
+//                            returnToInitial = true
+//                            backgroundOffset += 200
+//                        }
+//                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                        withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+//                            isFloating.toggle()
+//                            componentFloating.toggle()
+//                        }
+//                    }
+//                }
+//                .padding(.top, 500)
+//                .foregroundColor(.white)
+//                .bold()
+//                .font(.system(size: 20))
             }
         }
         .edgesIgnoringSafeArea(.all)
