@@ -39,9 +39,6 @@ struct SheetView: View {
                 HStack {
                     Spacer()
                     VStack {
-                        //                    Text("EXP \(currentExp)")
-                        //                        .fontWeight(.semibold)
-                        //                        .font(.system(size: 18))
                         Text("Lvl. \(currentLevel)")
                             .fontWeight(.semibold)
                             .font(.system(size: 12))
@@ -54,6 +51,8 @@ struct SheetView: View {
                     Spacer()
                     
                 }
+                
+                
             }.padding(.bottom, 700)
         }
         .onAppear(perform: {
@@ -73,7 +72,7 @@ struct SheetView: View {
                     .presentationCornerRadius(30)
                     .presentationBackground(.regularMaterial)
                     .presentationDragIndicator(.visible)
-                    .interactiveDismissDisabled(true).ignoresSafeArea()
+                    .interactiveDismissDisabled(true)
         }
     }
     struct ShrunkView: View {

@@ -44,6 +44,7 @@ struct ProgressBarView: View {
 //            Text("Taps: \(Int(progress)) / \(maxTaps)")
         }
         .padding()
+        .padding(.top, 200)
     }
 }
 
