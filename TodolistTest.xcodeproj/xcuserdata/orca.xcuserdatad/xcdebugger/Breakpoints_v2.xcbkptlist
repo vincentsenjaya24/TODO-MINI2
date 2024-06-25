@@ -14,10 +14,40 @@
             filePath = "TodolistTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "ContentView"
-            landmarkType = "14">
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "A1B5BAD2-6A78-4596-B09E-118DB22580B4 - f6f724a282130571"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TodolistTest.ContentView.body.getter : some"
+                  moduleName = "TodolistTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/orca/Documents/IOSDA/TODO2/TodolistTest/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95">
+               </Location>
+               <Location
+                  uuid = "A1B5BAD2-6A78-4596-B09E-118DB22580B4 - d8b63967505fb56c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; TodolistTest.TodoTabView in TodolistTest.ContentView.body.getter : some"
+                  moduleName = "TodolistTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/orca/Documents/IOSDA/TODO2/TodolistTest/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

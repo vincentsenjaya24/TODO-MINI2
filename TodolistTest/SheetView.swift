@@ -18,7 +18,6 @@ struct SheetView: View {
     @Query(filter: #Predicate<Task> { task in
         task.isCompleted == false
     }) private var previewTasks : [Task]
-    
     @Query(filter: #Predicate<Task> { task in
         task.isCompleted == true
     }) private var checkedTasks : [Task]

@@ -37,7 +37,6 @@ struct ContentView: View {
     @Binding var returnToInitial: Bool
     @Binding var backgroundOffset: CGFloat
     @Binding var componentFloating: Bool
-    
     //testbro
     var body: some View {
         
@@ -90,7 +89,7 @@ struct ContentView: View {
                     }
                     .navigationTitle("Schedule")
                 }
-//                Button("Reset", systemImage: "minus", action: resetSwiftData)
+//                ProfileView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask)
             }.tag(3)
         }
         .overlay(alignment: .bottom){
