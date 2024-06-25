@@ -14,7 +14,7 @@ struct SheetView: View {
     @AppStorage("currentExp") private var currentExp = 0 
     @AppStorage("currentLevel") private var currentLevel = 1
     @AppStorage("completedTask") private var completedTask = 0
-    @State private var currentDetent: PresentationDetent = .height(190)
+    @State private var currentDetent: PresentationDetent = .height(300)
     @Query(filter: #Predicate<Task> { task in
         task.isCompleted == false
     }) private var previewTasks : [Task]
@@ -42,7 +42,11 @@ struct SheetView: View {
                         Text("Lvl. \(currentLevel)")
                             .fontWeight(.semibold)
                             .font(.system(size: 12))
-                    }
+                        Spacer()
+                        Button("CloseSheet"){
+                            showSheet.toggle()
+                        }
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                     
                     VStack {
                         ProgressBarView(maxTaps: $maxTaps, progress: $progress)
@@ -55,25 +59,37 @@ struct SheetView: View {
                 
             }.padding(.bottom, 700)
         }
+        .edgesIgnoringSafeArea(.all)
         .onAppear(perform: {
             showSheet = true
         })
         .sheet(isPresented: $showSheet) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        if currentDetent == .height(190) {
-                            ShrunkView(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
-                        } else {
+            ZStack {
+                Color.white.edgesIgnoringSafeArea(.all)
+                VStack(alignment: .leading, spacing: 10) {
+                    if currentDetent == .height(300) {
+                        ShrunkView(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                    } else {
+                        ZStack{
+                            Color.black.edgesIgnoringSafeArea(.all)
                             ContentView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
                         }
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                    .presentationDetents([.height(190), .medium, .large], selection: $currentDetent)
-                    .presentationCornerRadius(30)
-                    .presentationBackground(.regularMaterial)
-                    .presentationDragIndicator(.visible)
-                    .interactiveDismissDisabled(true)
+                }
+                //                    .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .presentationDetents([.height(300), .medium, .large], selection: $currentDetent)
+                .presentationCornerRadius(30)
+                .presentationBackground(.regularMaterial)
+                .presentationDragIndicator(.visible)
+            }
+                    
         }
+        .edgesIgnoringSafeArea(.all)
+        .scrollContentBackground(.hidden)
+        .presentationBackgroundInteraction(.enabled(upThrough: .height(120)))
+        .interactiveDismissDisabled(true).ignoresSafeArea()
+//        .presentationBackground(<#T##style: ShapeStyle##ShapeStyle#>)
     }
     struct ShrunkView: View {
         var previewTasks: [Task]

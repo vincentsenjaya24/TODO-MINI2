@@ -17,6 +17,7 @@ struct TodoTabView: View {
         ("house", "Home"),
         ("calendar", "Schedule")
     ]
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
@@ -50,10 +51,9 @@ struct TodoTabView: View {
                 }
             }
             .frame(height: 48)
-            
-            
         }
-        .padding(8)
+        .frame(width: 340)
+//        .padding(8)
     }
 }
 

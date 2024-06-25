@@ -80,27 +80,33 @@ struct ContentView: View {
             }.tag(2)
             VStack{
                 NavigationStack(path: $path) {
-                    Divider()
-                  
-                        CalendarTest(selectedDay: $selectedDay).padding()
-                    
-                    List {
-                        ForEach(tasks) { task in
-                            if task.date.string() == selectedDay.string() {
-                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                    ScrollView{
+                        Divider()
+                      
+                            CalendarTest(selectedDay: $selectedDay).padding()
+                        
+                        List {
+                            ForEach(tasks) { task in
+                                if task.date.string() == selectedDay.string() {
+                                    TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                                }
                             }
+                            .onDelete(perform: deleteTask)
                         }
-                        .onDelete(perform: deleteTask)
+                        .scrollContentBackground(.hidden)
+                        .navigationTitle("Schedule")
+                        .listStyle(.grouped)
                     }
-                    .scrollContentBackground(.hidden)
-                    .navigationTitle("Schedule")
-                    .listStyle(.grouped)
                 }
 //                Button("Reset", systemImage: "minus", action: resetSwiftData)
-            }.tag(3)
+            }
+            .tag(3)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
+//        .padding(.bottom, 100)
         .overlay(alignment: .bottom){
             TodoTabView(tabSelection: $tabSelection)
+                
         }
     }
 //    func addTask() {
