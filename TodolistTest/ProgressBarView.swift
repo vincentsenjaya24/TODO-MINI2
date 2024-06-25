@@ -24,7 +24,7 @@ struct ProgressBarView: View {
 
                 Rectangle()
                     .frame(width: CGFloat(progress / Double(maxTaps)) * progressBarWidth, height: progressBarHeight)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color(hex: 0x00463D))
                     .cornerRadius(cornerRadius)
             }
 

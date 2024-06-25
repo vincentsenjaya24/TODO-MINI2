@@ -10,183 +10,409 @@ import Charts
 import SwiftData
 
 struct ProfileView: View {
-    
+    @Environment (\.dismiss) var dismiss
     @Binding var currentExp : Int
     @Binding var currentLevel : Int
     @Binding var completedTask : Int
     @Query var tasks: [Task]
-    
+    @State private var showPetSheet: Bool = false
     @Query(filter: #Predicate<Task> { task in
-        task.priority == 1
-    }) private var taskMeh : [Task]
-    
-    @Query(filter: #Predicate<Task> { task in
-        task.priority == 2
-    }) private var taskMaybe : [Task]
-    
-    @Query(filter: #Predicate<Task> { task in
-        task.priority == 3
-    }) private var taskMust : [Task]
-    
+           task.priority == 1
+       }) private var taskMeh : [Task]
+       
+       @Query(filter: #Predicate<Task> { task in
+           task.priority == 2
+       }) private var taskMaybe : [Task]
+       
+       @Query(filter: #Predicate<Task> { task in
+           task.priority == 3
+       }) private var taskMust : [Task]
     private var taskStats: [(name: String, count: Int)] {
-        return [
-            (name: "Meh", count: taskMeh.count),
-            (name: "Maybe", count: taskMaybe.count),
-            (name: "Must", count: taskMust.count),
-        ]
-    }
-    
+           return [
+               (name: "Meh", count: taskMeh.count),
+               (name: "Maybe", count: taskMaybe.count),
+               (name: "Must", count: taskMust.count),
+           ]
+       }
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading) {
-                // Header
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Ahoy,")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        Text("Captain!")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
+        ZStack{
+            BackgroundImageView(imageName: "sea bg").ignoresSafeArea()
+            ScrollView{
+                VStack(alignment: .leading) {
+                    // Header
+                    VStack{
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Ahoy,")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                Text("Captain!")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                            }.foregroundColor(.black)
+                            Spacer()
+                            Image("captain")
+                                .resizable()
+                                .frame(width: 90, height: 90)
+                                .clipShape(Circle())
+                        }
+                        // Level and XP
+                        VStack {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("My Journey")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color(hex: 0x00463D))
+                                    Text("\(currentExp)/100 XP")
+                                        .font(.caption)
+                                        .foregroundColor(Color.gray)
+                                }
+                                Spacer()
+                            }
+                            // Statistics
+                            HStack {
+                                VStack {
+                                    Text("\(completedTask)")
+                                        .font(.headline)
+                                        .foregroundColor(Color(hex: 0x00463D))
+                                    Text("Finished task")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                                Divider()
+                                Spacer()
+                                VStack {
+                                    Text("5")
+                                        .font(.headline)
+                                        .foregroundColor(Color(hex: 0x00463D))
+                                    Text("Treasures")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                                Divider()
+                                Spacer()
+                                ZStack {
+                                    Circle()
+                                        .stroke(lineWidth: 10)
+                                        .opacity(0.3)
+                                        .foregroundColor(Color.gray)
+                                    Circle()
+                                        .trim(from: 0.0, to: 0.5)
+                                        .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+                                        .foregroundColor(Color(hex: 0xFBAC01))
+                                        .rotationEffect(Angle(degrees: 270.0))
+                                        .animation(.linear)
+                                    VStack {
+                                        Text("\(currentLevel)")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color(hex: 0x00463D))
+                                        Text("Level")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                .frame(width: 70, height: 70)
+                                
+                            }
+                        }
+                        .padding(25)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                    }.padding().background(Color(hex: 0xFBF7EF)).cornerRadius(10)
+                    
+                    // Pet Collection
+                    VStack {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Pet Collection")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(hex: 0x00463D))
+                                Text("Pet you have been discovered")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer(minLength: 20)
+                            VStack(alignment: .trailing){
+                                Image("captain")
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Circle())
+                            }
+                        }
                     }
-                    Spacer()
-                    Image(systemName: "person.crop.circle")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .clipShape(Circle())
-                }
-                .padding()
-                
-                // Level and XP
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("My level")
-                        Text("\(currentExp)/100 XP")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+                    .onTapGesture {
+                        showPetSheet = true
                     }
-                    Spacer()
-                    ZStack {
-                        Circle()
-                            .stroke(lineWidth: 10)
-                            .opacity(0.3)
-                            .foregroundColor(Color.gray)
-                        Circle()
-                            .trim(from: 0.0, to: 0.5)
-                            .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-                            .foregroundColor(Color.green)
-                            .rotationEffect(Angle(degrees: 270.0))
-                            .animation(.linear)
-                        Text("\(currentLevel)")
+                    .padding(25)
+                    .background(Color(hex: 0xFBF7EF)).cornerRadius(10)
+                    
+                    // Task Progress
+                    VStack(alignment: .center) {
+                        Text("Your Weekly Summary")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(Color(hex: 0x00463D))
+                        HStack{
+                            VStack {
+                                ZStack{
+                                    Circle()
+                                        .fill(Color.white)
+                                    Chart {
+                                        ForEach(taskStats, id: \.name) { coffee in
+                                            SectorMark(
+                                                angle: .value("Cup", coffee.count),
+                                                innerRadius: .ratio(0.65),
+                                                angularInset: 2.0
+                                            )
+                                            .foregroundStyle(by: .value("Type", coffee.name))
+                                            .cornerRadius(10)
+                                        }
+                                    }.chartLegend(.hidden).padding()
+                                }
+                            }
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Circle().fill(Color(hex: 0xCF5C3C)).frame(width: 15, height: 15)
+                                    VStack(alignment: .leading)
+                                    {
+                                        Text("meh").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
+                                        Text("2 task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
+                                    }
+                                }
+                                
+                                HStack {
+                                    Circle().fill(Color(hex: 0xFBAC01)).frame(width: 15, height: 15)
+                                    VStack(alignment: .leading)
+                                    {
+                                        Text("maybe").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
+                                        Text("2 task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
+                                    }
+                                }
+                                
+                                HStack {
+                                    Circle().fill(Color(hex: 0x98BD27)).frame(width: 15, height: 15)
+                                    VStack(alignment: .leading)
+                                    {
+                                        Text("must").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
+                                        Text("2 task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
+                                    }
+                                }
+                            }.padding()
+                        }
+                    }.padding(25)
+                        .background(Color(hex: 0xFBF7EF)).cornerRadius(10)
+                    
+                    
+                    VStack {
+                        HStack {
+                            Button{
+                                self.dismiss()
+                            } label: {
+                                Spacer()
+                                Text("Okay!").font(.title3)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(hex: 0xFBF7EF))
+                                Spacer()
+                            }
+                            
+                        }
+                        
                     }
-                    .frame(width: 60, height: 60)
+                    .padding(25)
+                    .background(Color(hex: 0x00463D)).cornerRadius(10)
+                    
                 }
-                .padding()
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(10)
-                .padding()
                 
-                // Statistics
-                HStack {
-                    VStack {
-                        Text("\(completedTask)")
-                            .font(.headline)
-                        Text("Finished task")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                    Spacer()
-                    Divider()
-                    Spacer()
-                    VStack {
-                        Text("5")
-                            .font(.headline)
-                        Text("Treasures")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+            }.padding().edgesIgnoringSafeArea(.bottom)
+        }
+        .sheet(isPresented: $showPetSheet) {
+            ZStack {
+                VStack(alignment: .center, spacing: 10) {
+                    ScrollView{
+                        Text("Pet Collection").font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(hex: 0x00463D))
+                        Text("Select one to accompany you on your boat.").font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(hex: 0x00463D))
+                        HStack{
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                                    .shadow(radius: 3)
+                                Image("duck")
+                                    .resizable()
+                                    .frame(width: 110, height: 110)
+                            }
+                
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                                    .shadow(radius: 3)
+                                Image("dog")
+                                    .resizable()
+                                    .frame(width: 110, height: 110)
+                            }
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                                    .shadow(radius: 3)
+                                Image("otter")
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                            }
+                        }.padding()
+                        HStack{
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                        }.padding()
+                        
+                        HStack{
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                        }.padding()
+                        
+                        HStack{
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                        }.padding()
+                        
+                        HStack{
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                            ZStack{
+                                Color.white.frame(width: 110, height: 110)
+                                Image(systemName: "lock.square")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 110)
+                                    .foregroundColor(.gray)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)))
+                            }.frame(height:110).cornerRadius(20).shadow(radius: 5)
+                        }.padding()
                     }
                     
                 }
                 .padding()
-                
-                // Pet Collection
-                VStack {
-                    Text("Pet Collection")
-                        .font(.headline)
-                    Text("Pet you have been discovered")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(10)
-                .padding()
-                
-                // Task Progress
-                VStack(alignment: .center) {
-                    Divider()
-                    Text("Your Weekly Summary")
-                        .font(.headline)
-                        .padding()
-                    HStack{
-                        VStack {
-                            ZStack{
-                                Circle()
-                                    .fill(Color.gray.opacity(0.2))
-                                Chart {
-                                    ForEach(taskStats, id: \.name) { coffee in
-                                        SectorMark(
-                                            angle: .value("Cup", coffee.count),
-                                            innerRadius: .ratio(0.65),
-                                            angularInset: 2.0
-                                        )
-                                        .foregroundStyle(by: .value("Type", coffee.name))
-                                        .cornerRadius(10)
-                                    }
-                                }.chartLegend(.hidden).padding()
-                            }
-                        }.padding(10)
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Circle().fill(Color.orange).frame(width: 15, height: 15)
-                                VStack(alignment: .leading)
-                                {
-                                    Text("meh").font(.system(size: 16))
-                                    Text("2 task").font(.system(size: 12)).opacity(0.5)
-                                }
-                            }
-                            
-                            HStack {
-                                Circle().fill(Color.green).frame(width: 15, height: 15)
-                                VStack(alignment: .leading)
-                                {
-                                    Text("maybe").font(.system(size: 16))
-                                    Text("2 task").font(.system(size: 12)).opacity(0.5)
-                                }
-                            }
-                            
-                            HStack {
-                                Circle().fill(Color.blue).frame(width: 15, height: 15)
-                                VStack(alignment: .leading)
-                                {
-                                    Text("must").font(.system(size: 16))
-                                    Text("2 task").font(.system(size: 12)).opacity(0.5)
-                                }
-                            }
-                            
-                            
-                        }.padding()
-                    }.padding()
-                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .presentationCornerRadius(30)
+                .presentationBackground(Color(hex: 0xFBF7EF))
+                .presentationDragIndicator(.visible)
             }
-        }.padding().edgesIgnoringSafeArea(.bottom)
+        }
     }
 }
 
-//#Preview {
-//    ProfileView()
-//}
+#Preview {
+    ProfileView(currentExp: .constant(50), currentLevel: .constant(40), completedTask: .constant(10))
+}
+
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+}

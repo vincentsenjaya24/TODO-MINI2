@@ -22,6 +22,7 @@ struct SheetView: View {
         task.isCompleted == true
     }) private var checkedTasks : [Task]
     
+    
     @State var progress: Double = 0.0
     @State var maxTaps = 10
     
@@ -32,20 +33,32 @@ struct SheetView: View {
     @State var componentFloating = false
     
     var body: some View {
+        NavigationView{
         ZStack {
             WaterView(moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+            //                NavigationLink(destination: ProfileView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask){
+            
             VStack {
                 HStack {
-                    Spacer()
-                        Text("Lvl. \(currentLevel)")
-                            .fontWeight(.semibold)
-                            .font(.system(size: 12))
-                        ProgressBarView(maxTaps: $maxTaps, progress: $progress)
-                    Spacer()
-                    
-                }.background(.regularMaterial).clipped().frame(width: 300).cornerRadius(15)
-                
-            }.padding(.bottom, 700)
+                    NavigationLink(destination: ProfileView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask).navigationBarHidden(true)) {
+                        HStack {
+                            Text("Lvl. \(currentLevel)")
+                                .frame(height: 30)
+                                .fontWeight(.semibold)
+                                .font(.system(size: 16))
+                            ProgressBarView(maxTaps: $maxTaps, progress: $progress)
+                        }
+                        Spacer()
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    }.padding(.horizontal, 15).background(.regularMaterial).cornerRadius(15)
+                }
+                .frame(height: 50) // Adjust height as needed
+                .padding(10)
+                .cornerRadius(15)
+            }.padding(.bottom, 680).foregroundColor(.primary)
             
             VStack {
                 Button(action: {
@@ -58,9 +71,10 @@ struct SheetView: View {
                         Image(systemName: "list.bullet.clipboard.fill")
                             .foregroundColor(.black)
                             .font(.system(size: 24))
+                        }
                     }
+                    .padding(.top, 650)
                 }
-                .padding(.top, 650)
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -69,7 +83,6 @@ struct SheetView: View {
         })
         .sheet(isPresented: $showSheet) {
             ZStack {
-//                Color.white.edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading, spacing: 10) {
                     if currentDetent == .height(300) {
                         ZStack {
