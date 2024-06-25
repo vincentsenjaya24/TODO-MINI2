@@ -15,6 +15,8 @@ struct WaterView2: View {
     @State private var startFloating = false
     @State private var returnToInitial = false
     @State private var backgroundOffset: CGFloat = 0
+    @State private var isPlaying = false
+    
 
     var body: some View {
         TimelineView(.animation) { tl in
@@ -35,10 +37,8 @@ struct WaterView2: View {
                     }
 
                     VStack {
-                        LottieView(animation: .named("finish"))
-                            .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
-                        
-                        Image("boat2")
+                        LottieView(animation: .named("boat tanpa shadow  (5)"))
+                            .playbackMode(isPlaying ? .playing(.toProgress(1, loopMode: .playOnce)) : .paused)
                             .resizable()
                             .frame(width: 200, height: 200)
                             .padding(.bottom, 250)
@@ -54,11 +54,13 @@ struct WaterView2: View {
                                     }
                                 }
                             }
+                            
                     }
 
                 Button("Move") {
                     withAnimation(.easeInOut(duration: 2)) {
                         moveToTop = true
+                        isPlaying = true
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
