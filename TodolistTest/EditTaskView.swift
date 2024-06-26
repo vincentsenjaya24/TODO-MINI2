@@ -14,7 +14,7 @@ struct EditTaskView: View {
     var body: some View {
         VStack{
             Form{
-                TextField("Name", text: $task.title)
+                TextField("Title", text: $task.title)
                 TextField("Details", text: $task.details, axis: .vertical)
                 DatePicker("Date", selection: $task.date)
                 Section("Category"){
@@ -25,9 +25,13 @@ struct EditTaskView: View {
                     }.pickerStyle(.segmented).background(Color.clear)
                 }
             }
+            .background(Color.white)
         }
         .navigationTitle("Edit Task")
+        .scrollContentBackground(.hidden)
         .navigationBarTitleDisplayMode(.inline)
+        
+        
     }
     
 }

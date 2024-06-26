@@ -36,7 +36,7 @@ struct TodoTabView: View {
                             if index + 1 == tabSelection {
                                 Capsule()
                                     .frame(height: 0)
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color(hex: 0x00463D))
                                     .matchedGeometryEffect(id: "SelectedTabId", in: animationNamespace)
                                     .offset(y: 3)
                             } else {
@@ -45,7 +45,7 @@ struct TodoTabView: View {
                                     .foregroundColor(.clear)
                                     .offset(y: 3)
                             }
-                        }.foregroundColor(index + 1 == tabSelection ? .blue : .gray)
+                        }.foregroundColor(index + 1 == tabSelection ? Color(hex: 0x4CB4A7) : .gray)
                     }
                 }
             }
@@ -55,6 +55,7 @@ struct TodoTabView: View {
 //        .padding(8)
     }
 }
+
 
 //#Preview {
 //    TodoTabView()

@@ -62,16 +62,15 @@ struct CalendarTest: View {
                         ZStack{
                             if value.day != -1 {
                                 Text("\(value.day)").foregroundStyle(selectedDay.string() == value.date.string() ? .primary : .secondary)
-//                                Text("\(value.day)").foregroundStyle(selectedDay.string() == value.date.string() ? .red : (task.date.string() == value.date.string() ? .blue : .white))
                                     .fontWeight(selectedDay.string() == value.date.string() ? .bold : .none)
                                     .background{
                                         ZStack{
                                             if selectedDay.string() == value.date.string(){
-                                                Circle().frame(width: 48, height: 48).foregroundColor(.blue)
+                                                Circle().frame(width: 48, height: 48).foregroundColor(Color(hex: 0x4CB4A7))
                                             }
                                             ForEach(tasks){ task in
                                                 if task.date.string() == value.date.string(){
-                                                    Circle().frame(width: 48, height: 48).foregroundColor(selectedDay.string() == value.date.string() ? .blue : .blue.opacity(0.3))
+                                                    Circle().frame(width: 48, height: 48).foregroundColor(selectedDay.string() == value.date.string() ? Color(hex: 0x4CB4A7) : Color(hex: 0x4CB4A7).opacity(0.5))
                                                 }
                                             }
                                         }

@@ -5,6 +5,7 @@ import Foundation
 
 struct SheetViewCustom: View {
     @State private var showSheet: Bool = false
+    @State private var showModal: Bool = false
     @AppStorage("currentExp") private var currentExp = 0
     @AppStorage("currentLevel") private var currentLevel = 1
     @AppStorage("completedTask") private var completedTask = 0
@@ -37,7 +38,7 @@ struct SheetViewCustom: View {
     var body: some View {
         NavigationView{
             GeometryReader { geometry in
-                ZStack (){
+                ZStack{
                     ZStack{
                         VStack {
                             HStack {
@@ -70,17 +71,20 @@ struct SheetViewCustom: View {
                                 
                             }
                             if showSheet && height > 779 {
-                                ContentView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating).padding(16).padding(.bottom, 8)
+                                if showModal {
+                                    CustomDialog(isActive: $showModal, title: "YEEEAYY", message: "Treasure", buttonTitle: "OK").padding(.bottom, 250)
+                                }
+                                ContentView(currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating, showModal: $showModal).padding(16).padding(.bottom, 8)
                                     .transition(.scale)
                             }
                             else {
                                 ShrunkViewCustom(previewTasks: previewTasks, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
                             }
                         }
-                        
+                
                         .ignoresSafeArea()
                         .frame(maxWidth: width)
-                        .background(.white)
+                        .background(Color(.white))
                         .cornerRadius(30)
                         .ignoresSafeArea()
                         .position(location)
@@ -90,9 +94,6 @@ struct SheetViewCustom: View {
                             DragGesture()
                                 .onChanged { gesture in
                                     dragOffset = -(gesture.translation.height)
-                                    
-                                    print(dragOffset)
-                                    
                                 }
                                 .onEnded { gesture in
                                     let newHeight = height + gesture.translation.height
@@ -123,7 +124,7 @@ struct SheetViewCustom: View {
                 .edgesIgnoringSafeArea(.all)
                 
             }.background(WaterView(moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating))
-        }
+        }.background(Color.white)
     }
     
     var simpleDrag: some Gesture {
@@ -149,24 +150,34 @@ struct ShrunkViewCustom: View {
     @Binding var backgroundOffset: CGFloat
     @Binding var componentFloating: Bool
     @State private var path = [Task]()
+    @State private var showModal : Bool = false
     
     var body: some View {
+        if showModal {
+            CustomDialog(isActive: $showModal, title: "YEEEAYY", message: "treasure", buttonTitle: "OK").padding(.bottom, 250)
+        }
         NavigationStack{
             ZStack {
                 List{
                     ForEach(previewTasks){task in
-                        TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                        TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating, showModal:  $showModal)
                     }
                 }
                 Button(action: {
                     addTask()
                 }, label: {
                     ZStack {
-                        Circle().foregroundColor(.green).frame(width: 60, height: 60)
-                        Text("ADD!").foregroundColor(.white)
+                        Circle().foregroundColor(Color(hex: 0x00463D)).frame(width: 60, height: 60)
+                        Image(systemName: "plus")
+                            .resizable()
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(width: 20, height: 20)
+                            .clipShape(Circle())
                     }
                 })
                 .position(x: 300, y: 200)
+                
             }
         }
     }

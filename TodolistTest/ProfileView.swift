@@ -203,7 +203,7 @@ struct ProfileView: View {
                                     Circle().fill(Color(hex: 0x98BD27)).frame(width: 15, height: 15)
                                     VStack(alignment: .leading)
                                     {
-                                        Text("home").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
+                                        Text("house").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
                                         Text("\(taskMust.count) task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
                                     }
                                 }
@@ -229,7 +229,7 @@ struct ProfileView: View {
                         
                     }
                     .padding(25)
-                    .background(Color(hex: 0x00463D)).cornerRadius(10)
+                    .background(Color(hex: 0x4CB4A7)).cornerRadius(10)
                     
                 }
                 

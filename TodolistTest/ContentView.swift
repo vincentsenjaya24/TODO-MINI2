@@ -37,15 +37,16 @@ struct ContentView: View {
     @Binding var returnToInitial: Bool
     @Binding var backgroundOffset: CGFloat
     @Binding var componentFloating: Bool
-    
+    @Binding var showModal : Bool
     //testbro
     var body: some View {
             TabView(selection: $tabSelection){
                 VStack{
+                    
                     NavigationStack(path: $path) {
                         List {
                             ForEach(doneTasks) { task in
-                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating, showModal: $showModal)
                             }
                             .onDelete(perform: deleteTask)
                         }
@@ -56,12 +57,11 @@ struct ContentView: View {
                                    
                 }.tag(1)
                 VStack{
-                    
                     NavigationStack(path: $path) {
 //                        Button("Reset", systemImage: "minus", action: resetSwiftData)
                         List {
                             ForEach(previewTasks) { task in
-                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                                TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating, showModal: $showModal)
                             }
                             .onDelete(perform: deleteTask)
                         }
@@ -70,6 +70,7 @@ struct ContentView: View {
                         .toolbar {
                             Button("Add Task", systemImage: "plus", action: addTask)
                         }
+                        .accentColor(Color(hex: 0x00463D))
                         .navigationDestination(for: Task.self, destination: EditTaskView.init)
                     }
                     .padding(.bottom, 40)
@@ -83,18 +84,17 @@ struct ContentView: View {
                             CalendarTest(selectedDay: $selectedDay).padding()
                             ForEach(tasks) { task in
                                 if task.date.string() == selectedDay.string() {
-                                    TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
+                                    TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating, showModal: $showModal)
                                 }
                             }
                             .onDelete(perform: deleteTask)
                         }
+                        .scrollContentBackground(.hidden)
                         .navigationTitle("Schedule")
-                        
                     }
                 }
                 .tag(3)
                 .padding(.bottom, 50)
-                //            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             }
             .background(ignoresSafeAreaEdges: .bottom)
            

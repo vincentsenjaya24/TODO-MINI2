@@ -15,6 +15,8 @@
 		2443A2082C220C760072F526 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2072C220C760072F526 /* EditTaskView.swift */; };
 		2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2092C2212F30072F526 /* TaskRowView.swift */; };
 		24DB545E2C2C0671009F541C /* SheetViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB545D2C2C0671009F541C /* SheetViewCustom.swift */; };
+		24DB54602C2C159F009F541C /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB545F2C2C159F009F541C /* CustomDialog.swift */; };
+		24DB54622C2C192D009F541C /* Treasure.json in Resources */ = {isa = PBXBuildFile; fileRef = 24DB54612C2C192C009F541C /* Treasure.json */; };
 		24DE33472C2B58FA004F18FA /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DE33462C2B58FA004F18FA /* PetCollectionView.swift */; };
 		BE25652D2C29BFF2009F547B /* WaterView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25652C2C29BFF2009F547B /* WaterView2.swift */; };
 		BE3DDED22C2AAAB700AFD8AA /* boat tanpa shadow  (5).json in Resources */ = {isa = PBXBuildFile; fileRef = BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */; };
@@ -25,7 +27,6 @@
 		BEE730942C1FDAE7005B0F99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE730932C1FDAE7005B0F99 /* ContentView.swift */; };
 		BEE730962C1FDAEA005B0F99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE730952C1FDAEA005B0F99 /* Assets.xcassets */; };
 		BEE730992C1FDAEA005B0F99 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE730982C1FDAEA005B0F99 /* Preview Assets.xcassets */; };
-		BEE730A02C1FDD70005B0F99 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7309F2C1FDD70005B0F99 /* SheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		2443A2072C220C760072F526 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		2443A2092C2212F30072F526 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		24DB545D2C2C0671009F541C /* SheetViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewCustom.swift; sourceTree = "<group>"; };
+		24DB545F2C2C159F009F541C /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
+		24DB54612C2C192C009F541C /* Treasure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Treasure.json; sourceTree = "<group>"; };
 		24DE33462C2B58FA004F18FA /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
 		BE25652C2C29BFF2009F547B /* WaterView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView2.swift; sourceTree = "<group>"; };
 		BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "boat tanpa shadow  (5).json"; sourceTree = "<group>"; };
@@ -47,7 +50,6 @@
 		BEE730932C1FDAE7005B0F99 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BEE730952C1FDAEA005B0F99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEE730982C1FDAEA005B0F99 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BEE7309F2C1FDD70005B0F99 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +85,6 @@
 			children = (
 				241DB80D2C2891F200888F66 /* TodoTabView.swift */,
 				BEE730912C1FDAE7005B0F99 /* TodolistTestApp.swift */,
-				BEE7309F2C1FDD70005B0F99 /* SheetView.swift */,
 				BEE730932C1FDAE7005B0F99 /* ContentView.swift */,
 				BEE730952C1FDAEA005B0F99 /* Assets.xcassets */,
 				BEE730972C1FDAEA005B0F99 /* Preview Content */,
@@ -95,10 +96,12 @@
 				241C989B2C296F8600FF570D /* ProfileView.swift */,
 				BEDAD71A2C296ECE008120C6 /* WaterView.swift */,
 				BE25652C2C29BFF2009F547B /* WaterView2.swift */,
+				24DB54612C2C192C009F541C /* Treasure.json */,
 				BEDAD7182C296E8D008120C6 /* Water.metal */,
 				BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */,
 				24DE33462C2B58FA004F18FA /* PetCollectionView.swift */,
 				24DB545D2C2C0671009F541C /* SheetViewCustom.swift */,
+				24DB545F2C2C159F009F541C /* CustomDialog.swift */,
 			);
 			path = TodolistTest;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24DB54622C2C192D009F541C /* Treasure.json in Resources */,
 				BEE730992C1FDAEA005B0F99 /* Preview Assets.xcassets in Resources */,
 				BE3DDED22C2AAAB700AFD8AA /* boat tanpa shadow  (5).json in Resources */,
 				BEE730962C1FDAEA005B0F99 /* Assets.xcassets in Resources */,
@@ -191,11 +195,11 @@
 				BE25652D2C29BFF2009F547B /* WaterView2.swift in Sources */,
 				2443A2042C2209E30072F526 /* Task.swift in Sources */,
 				BEE730942C1FDAE7005B0F99 /* ContentView.swift in Sources */,
-				BEE730A02C1FDD70005B0F99 /* SheetView.swift in Sources */,
 				24DE33472C2B58FA004F18FA /* PetCollectionView.swift in Sources */,
 				24DB545E2C2C0671009F541C /* SheetViewCustom.swift in Sources */,
 				BEE730922C1FDAE7005B0F99 /* TodolistTestApp.swift in Sources */,
 				BEDAD71B2C296ECE008120C6 /* WaterView.swift in Sources */,
+				24DB54602C2C159F009F541C /* CustomDialog.swift in Sources */,
 				BEDAD7192C296E8D008120C6 /* Water.metal in Sources */,
 				2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */,
 				2443A2082C220C760072F526 /* EditTaskView.swift in Sources */,

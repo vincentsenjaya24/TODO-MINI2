@@ -12,7 +12,7 @@ struct TodolistTestApp: App {
     var body: some Scene {
         WindowGroup {
 //            SheetView()
-            SheetViewCustom()
+            SheetViewCustom().preferredColorScheme(.light).accentColor(Color(hex: 0x4CB4A7))
         }.modelContainer(for: Task.self)
     }
 }
