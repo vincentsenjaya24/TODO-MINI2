@@ -70,6 +70,7 @@ struct TaskRowView: View {
     
     
     func addProgress(){
+        completedTask += 1
         currentExp += 10
         if currentExp >= 100 {
             currentExp = 0

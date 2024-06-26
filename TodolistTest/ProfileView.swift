@@ -20,13 +20,14 @@ struct ProfileView: View {
            task.priority == 1
        }) private var taskMeh : [Task]
        
-       @Query(filter: #Predicate<Task> { task in
-           task.priority == 2
-       }) private var taskMaybe : [Task]
-       
-       @Query(filter: #Predicate<Task> { task in
-           task.priority == 3
-       }) private var taskMust : [Task]
+   @Query(filter: #Predicate<Task> { task in
+       task.priority == 2
+   }) private var taskMaybe : [Task]
+   
+   @Query(filter: #Predicate<Task> { task in
+       task.priority == 3
+   }) private var taskMust : [Task]
+    
     private var taskStats: [(name: String, count: Int)] {
            return [
                (name: "Meh", count: taskMeh.count),
@@ -34,6 +35,11 @@ struct ProfileView: View {
                (name: "Must", count: taskMust.count),
            ]
        }
+    let colorMapping: [String: Color] = [
+            "Meh": Color(hex: 0xCF5C3C),
+            "Maybe": Color(hex: 0xFBAC01),
+            "Must": Color(hex: 0x98BD27)
+        ]
     var body: some View {
         ZStack{
             BackgroundImageView(imageName: "sea bg").ignoresSafeArea()
@@ -84,7 +90,7 @@ struct ProfileView: View {
                                 Divider()
                                 Spacer()
                                 VStack {
-                                    Text("5")
+                                    Text("\(completedTask)")
                                         .font(.headline)
                                         .foregroundColor(Color(hex: 0x00463D))
                                     Text("Treasures")
@@ -135,19 +141,19 @@ struct ProfileView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
-                            Spacer(minLength: 20)
-                            VStack(alignment: .trailing){
-                                Image("captain")
+                            Spacer()
+                            VStack{
+                                Image("pet")
                                     .resizable()
-                                    .frame(width: 100, height: 100)
-                                    .clipShape(Circle())
+                                    .frame(width: 80, height: 80)
+                                    
                             }
                         }
                     }
+                    .padding(25)
                     .onTapGesture {
                         showPetSheet = true
                     }
-                    .padding(25)
                     .background(Color(hex: 0xFBF7EF)).cornerRadius(10)
                     
                     // Task Progress
@@ -168,7 +174,7 @@ struct ProfileView: View {
                                                 innerRadius: .ratio(0.65),
                                                 angularInset: 2.0
                                             )
-                                            .foregroundStyle(by: .value("Type", coffee.name))
+                                            .foregroundStyle(colorMapping[coffee.name] ?? .gray)
                                             .cornerRadius(10)
                                         }
                                     }.chartLegend(.hidden).padding()
@@ -179,8 +185,8 @@ struct ProfileView: View {
                                     Circle().fill(Color(hex: 0xCF5C3C)).frame(width: 15, height: 15)
                                     VStack(alignment: .leading)
                                     {
-                                        Text("meh").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
-                                        Text("2 task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
+                                        Text("health").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
+                                        Text("\(taskMeh.count) task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
                                     }
                                 }
                                 
@@ -188,8 +194,8 @@ struct ProfileView: View {
                                     Circle().fill(Color(hex: 0xFBAC01)).frame(width: 15, height: 15)
                                     VStack(alignment: .leading)
                                     {
-                                        Text("maybe").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
-                                        Text("2 task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
+                                        Text("work").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
+                                        Text("\(taskMaybe.count) task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
                                     }
                                 }
                                 
@@ -197,8 +203,8 @@ struct ProfileView: View {
                                     Circle().fill(Color(hex: 0x98BD27)).frame(width: 15, height: 15)
                                     VStack(alignment: .leading)
                                     {
-                                        Text("must").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
-                                        Text("2 task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
+                                        Text("home").font(.system(size: 16)).foregroundColor(Color(hex: 0x00463D))
+                                        Text("\(taskMust.count) task").font(.system(size: 12)).opacity(0.5).foregroundColor(Color(hex: 0x00463D))
                                     }
                                 }
                             }.padding()
