@@ -64,7 +64,7 @@ struct WaterView: View {
                         .playbackMode(moveToTop ? .playing(.toProgress(2, loopMode: .loop)) : .paused)
                         .resizable()
                         .frame(width: 200, height: 200)
-                        .padding(.bottom, 250)
+                        .padding(.bottom, 320)
                         .offset(y: moveToTop ? -UIScreen.main.bounds.height / 10 : UIScreen.main.bounds.height / 8)
                         .offset(y: isFloating ? -3.5 : 3.5)
                         .onAppear {

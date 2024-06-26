@@ -14,6 +14,7 @@
 		2443A2042C2209E30072F526 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2032C2209E30072F526 /* Task.swift */; };
 		2443A2082C220C760072F526 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2072C220C760072F526 /* EditTaskView.swift */; };
 		2443A20A2C2212F30072F526 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2443A2092C2212F30072F526 /* TaskRowView.swift */; };
+		24DB545E2C2C0671009F541C /* SheetViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB545D2C2C0671009F541C /* SheetViewCustom.swift */; };
 		24DE33472C2B58FA004F18FA /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DE33462C2B58FA004F18FA /* PetCollectionView.swift */; };
 		BE25652D2C29BFF2009F547B /* WaterView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE25652C2C29BFF2009F547B /* WaterView2.swift */; };
 		BE3DDED22C2AAAB700AFD8AA /* boat tanpa shadow  (5).json in Resources */ = {isa = PBXBuildFile; fileRef = BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */; };
@@ -34,6 +35,7 @@
 		2443A2032C2209E30072F526 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		2443A2072C220C760072F526 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		2443A2092C2212F30072F526 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		24DB545D2C2C0671009F541C /* SheetViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewCustom.swift; sourceTree = "<group>"; };
 		24DE33462C2B58FA004F18FA /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
 		BE25652C2C29BFF2009F547B /* WaterView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView2.swift; sourceTree = "<group>"; };
 		BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "boat tanpa shadow  (5).json"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				BEDAD7182C296E8D008120C6 /* Water.metal */,
 				BE3DDED12C2AAAB700AFD8AA /* boat tanpa shadow  (5).json */,
 				24DE33462C2B58FA004F18FA /* PetCollectionView.swift */,
+				24DB545D2C2C0671009F541C /* SheetViewCustom.swift */,
 			);
 			path = TodolistTest;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				BEE730942C1FDAE7005B0F99 /* ContentView.swift in Sources */,
 				BEE730A02C1FDD70005B0F99 /* SheetView.swift in Sources */,
 				24DE33472C2B58FA004F18FA /* PetCollectionView.swift in Sources */,
+				24DB545E2C2C0671009F541C /* SheetViewCustom.swift in Sources */,
 				BEE730922C1FDAE7005B0F99 /* TodolistTestApp.swift in Sources */,
 				BEDAD71B2C296ECE008120C6 /* WaterView.swift in Sources */,
 				BEDAD7192C296E8D008120C6 /* Water.metal in Sources */,

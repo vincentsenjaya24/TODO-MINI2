@@ -58,7 +58,7 @@ struct ContentView: View {
                 VStack{
                     
                     NavigationStack(path: $path) {
-                        Button("Reset", systemImage: "minus", action: resetSwiftData)
+//                        Button("Reset", systemImage: "minus", action: resetSwiftData)
                         List {
                             ForEach(previewTasks) { task in
                                 TaskRowView(task: task, currentExp: $currentExp, currentLevel: $currentLevel, completedTask: $completedTask, maxTaps: $maxTaps, progress: $progress, moveToTop: $moveToTop, isFloating: $isFloating, returnToInitial: $returnToInitial, backgroundOffset: $backgroundOffset, componentFloating: $componentFloating)
